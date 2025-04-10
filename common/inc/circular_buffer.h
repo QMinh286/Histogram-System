@@ -3,15 +3,20 @@
 
 #include <stddef.h> 
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/sem.h>
+#include <sys/shm.h>
+#include <unistd.h>
 
-/**
- * Circular buffer data structure
- * This will be stored in shared memory
- */
 typedef struct {
-    int read_index;                /* Index for reading from the buffer */
-    int write_index;               /* Index for writing to the buffer */
-    char buffer[256];              /* Actual buffer data - fixed size 256 */
+    int read_index;                
+    int write_index;               
+    char buffer[256];              
 } CircularBuffer;
 
 #endif 
