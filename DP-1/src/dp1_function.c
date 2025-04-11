@@ -1,6 +1,6 @@
-#include "../../common/include/constants.h"
-#include "../../common/include/circular_buffer.h"
-#include "../../common/include/ipc_utils.h"
+#include "../../common/inc/constants.h"
+#include "../../common/inc/circular_buffer.h"
+#include "../../common/inc/ipc_utils.h"
 #include "../inc/dp1.h"
 
 static CircularBuffer *cb = NULL;  
@@ -69,7 +69,7 @@ int dp1_process(void) {
     return 0;
 }
 
-/
+
 void dp1_generate_letters(char *buffer, int count) {
     int i;
     int range = CHAR_END - CHAR_START + 1;
@@ -103,18 +103,18 @@ pid_t dp1_launch_dp2(int shm_id) {
 
 void dp1_cleanup(void) {
     if (cb != NULL) {
-        detach_shared_memory(g_cb);
+        detach_shared_memory(cb);
         cb = NULL;
     }
     
     if (dp2_pid == -1) {
         if (shm_id != -1) {
-            remove_shared_memory(g_shm_id);
+            remove_shared_memory(shm_id);
             shm_id = -1;
         }
         
         if (sem_id != -1) {
-            remove_semaphore(g_sem_id);
+            remove_semaphore(sem_id);
             sem_id = -1;
         }
     }
