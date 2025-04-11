@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include "circular_buffer.h"
 
+
 int create_semaphore(key_t sem_key);
 
 int lock_semaphore(int sem_id);
