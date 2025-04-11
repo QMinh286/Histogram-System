@@ -22,5 +22,5 @@
 
 #define HISTOGRAM_ONES '-'
 #define HISTOGRAM_TENS '+'
-#define HISTOGRAM_HUNDREDS '*
+#define HISTOGRAM_HUNDREDS '*'
 #endif /* CONSTANTS_H */

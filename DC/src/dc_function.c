@@ -44,7 +44,6 @@ int dc_init(int shm_id, pid_t dp1_pid, pid_t dp2_pid) {
     return 0;
 }
 
-/
 int dc_process(void) {
     while (run) {
         if (alarm_flag) {
@@ -60,7 +59,7 @@ int dc_process(void) {
         
         if (shutdown) {
             if (lock_semaphore(sem_id) != -1) {
-                if (g_cb->read_index == g_cb->write_index) {
+                if (cb->read_index == cb->write_index) {
                     unlock_semaphore(sem_id);
                     break;
                 }
@@ -77,11 +76,51 @@ int dc_process(void) {
 }
 
 int dc_read_data(void) {
+    char buffer[60]; 
+    int read_count = 0;
+    int i;
+    if (lock_semaphore(sem_id) == -1) {
+        return 0;
+    }
     
+    read_count = cb_read_multi(cb, buffer, 40);
+    
+    unlock_semaphore(sem_id);
+    
+    for (i = 0; i < read_count; i++) {
+        if (buffer[i] >= CHAR_START && buffer[i] <= CHAR_END) {
+            letter_counts[buffer[i] - CHAR_START]++;
+        }
+    }
+    
+    return read_count;
 }
 
 void dc_display_histogram(void) {
+    int i, j;
+    int hundreds, tens, ones;
     
+    dc_clear_screen();
+    
+    for (i = 0; i <= (CHAR_END - CHAR_START); i++) {
+        hundreds = letter_counts[i] / 100;
+        tens = (letter_counts[i] % 100) / 10;
+        ones = letter_counts[i] % 10;
+        
+        printf("%c-%03d ", CHAR_START + i, letter_counts[i]);
+        
+        for (j = 0; j < hundreds; j++) {
+            putchar(HISTOGRAM_HUNDREDS);
+        }
+        for (j = 0; j < tens; j++) {
+            putchar(HISTOGRAM_TENS);
+        }
+        for (j = 0; j < ones; j++) {
+            putchar(HISTOGRAM_ONES);
+        }
+        
+        putchar('\n');
+    }
 }
 
 
@@ -91,7 +130,7 @@ void dc_clear_screen(void) {
 
 void dc_cleanup(void) {
     if (cb != NULL) {
-        detach_shared_memory(g_cb);
+        detach_shared_memory(cb);
         cb = NULL;
     }
 }
@@ -103,7 +142,7 @@ void dc_exit(void) {
         shm_id_g = -1;
     }
     
-    if (g_sem_id != -1) {
+    if (sem_id != -1) {
         remove_semaphore(sem_id);
         sem_id = -1;
     }
