@@ -7,8 +7,8 @@
 #
 #
 # FINAL BINARY Target
-./bin/dc : ./obj/main.o ./obj/dc.o ../common/obj/circular_buffer.o ../common/obj/ipc_utils.o
-	cc ./obj/main.o ./obj/dc.o ../common/obj/circular_buffer.o ../common/obj/ipc_utils.o -o ./bin/dc
+./bin/dc : ./obj/main.o ./obj/dc_function.o ../common/obj/circular_buffer.o ../common/obj/ipc_utils.o
+	cc ./obj/main.o ./obj/dc_function.o ../common/obj/circular_buffer.o ../common/obj/ipc_utils.o -o ./bin/dc
 #
 # =======================================================
 #                     Dependencies
@@ -16,7 +16,7 @@
 ./obj/main.o : ./src/main.c ./inc/dc.h
 	cc -c ./src/main.c -I./inc -I../common/inc -o ./obj/main.o
 
-./obj/dc.o : ./src/dc.c ./inc/dc.h ../common/inc/circular_buffer.h ../common/inc/ipc_utils.h ../common/inc/constants.h
+./obj/dc_function.o : ./src/dc.c ./inc/dc.h ../common/inc/circular_buffer.h ../common/inc/ipc_utils.h ../common/inc/constants.h
 	cc -c ./src/dc.c -I./inc -I../common/inc -o ./obj/dc.o
 
 ../common/obj/circular_buffer.o : ../common/src/circular_buffer.c ../common/inc/circular_buffer.h ../common/inc/constants.h
