@@ -3,11 +3,11 @@
 #include "../../common/include/ipc_utils.h"
 #include "../inc/dp1.h"
 
-static CircularBuffer *cb = NULL;  /* Pointer to shared circular buffer */
-static int shm_id = -1;            /* Shared memory ID */
-static int sem_id = -1;            /* Semaphore ID */
-static pid_t dp2_pid = -1;         /* PID of DP-2 process */
-static int run = 1;            /* Flag to control the main loop */
+static CircularBuffer *cb = NULL;  
+static int shm_id = -1;            
+static int sem_id = -1;            
+static pid_t dp2_pid = -1;         
+static int run = 1;            
 
 int dp1_init(void) {
     
