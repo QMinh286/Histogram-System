@@ -1,3 +1,11 @@
+/*
+*	FILE:			dp1.h
+*	ASSIGNMENT:	The "Histogram System"
+*	PROGRAMMERS:	Quang Minh Vu
+*	DESCRIPTION:	This header file defines the interface for the DP1 (Data Producer 1) process
+*                 in the Histogram System. It contains declarations for initialization, processing,
+*                 inter-process communication, and signal handling for the DP1 module.
+*/
 #ifndef DP1_H
 #define DP1_H
 

@@ -1,4 +1,11 @@
-
+/*
+*	FILE:			main.c
+*	ASSIGNMENT:	The "Histogram System"
+*	PROGRAMMERS:	Quang Minh Vu
+*	DESCRIPTION:	This is the entry point for the DP-1 process. It initializes 
+*					resources, enters the main processing loop, and performs cleanup 
+*					upon termination.
+*/
 
 #include "../inc/dp1.h"
 

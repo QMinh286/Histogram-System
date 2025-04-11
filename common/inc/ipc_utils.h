@@ -1,7 +1,11 @@
-/**
- * @file ipc_utils.h
- * @brief IPC utility functions for the HISTO-SYSTEM
- */
+/*
+*	FILE:			ipc_utils.h
+*	ASSIGNMENT:	    Histogram System
+*	PROGRAMMERS:	Quang Minh Vu
+*	DESCRIPTION:	This header file provides declarations for utility functions 
+*                 related to inter-process communication (IPC), including semaphore 
+*                 and shared memory management.
+*/
 
 #ifndef IPC_UTILS_H
 #define IPC_UTILS_H

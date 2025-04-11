@@ -1,3 +1,10 @@
+/*
+*	FILE:			main.c
+*	ASSIGNMENT:	The "Histogram System"
+*	PROGRAMMERS:	Quang Minh Vu
+*	DESCRIPTION:	This is the entry point for the DP-2 process. It connects to the 
+*					shared memory, processes data from it, and cleans up upon exit.
+*/
 #include "../inc/dp2.h"
 
 int main(int argc, char *argv[]) {

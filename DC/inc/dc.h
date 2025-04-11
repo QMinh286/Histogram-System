@@ -1,3 +1,10 @@
+/*
+*	FILE:			dc.h
+*	ASSIGNMENT:	The "Histogram System"
+*	PROGRAMMERS:	Quang Minh Vu
+*	DESCRIPTION:	This file defines the interface for the DC (Display Controller) module of the Histogram System.
+*                 It includes function declarations for initializing, processing, and handling signals within the DC module.
+*/
 
 #ifndef DC_H
 #define DC_H
